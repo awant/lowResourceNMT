@@ -50,8 +50,6 @@ def make_small_datasets(datapath, train_size, test_size, dev_size):
     total_words = len(mapping)
     words = np.array(list(mapping.keys()))
 
-    print(len(words))
-
     assert (total_words >= train_size + test_size + dev_size)
 
     new_ix = np.random.choice(
