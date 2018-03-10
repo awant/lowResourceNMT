@@ -21,8 +21,8 @@
 | 7           | 1776   |      |                                                                                   |
 | 8           | 1262   |      |                                                                                   |
 | ...         | ...    |      |                                                                                   |
-| 67          | 1      | לה   | 'lohhah', 'lhohe', 'leh', 'lhh', 'lohe', 'lhaahe', 'lh', 'lhe', 'lahh', 'leh',... |
-| 93          | 1      | יהוה | 'yehavihu', 'yehvehh', 'yohuohu', 'yahve', 'yhuh', 'yhv', ...                     |
+| 67          | 1      | לה (LH)    | 'lohhah', 'lhohe', 'leh', 'lhh', 'lohe', 'lhaahe', 'lh', 'lhe', 'lahh', 'leh',... |
+| 93          | 1      | יהוה (YHVH) | 'yehavihu', 'yehvehh', 'yohuohu', 'yahve', 'yhuh', 'yhv', ...                     |
 
 
 В алфавите 22 буквы 
