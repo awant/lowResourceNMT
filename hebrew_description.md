@@ -8,7 +8,11 @@
 Уникальных строк с огласовками: 496000.
 См. https://github.com/awant/lowResourceNMT/blob/master/translate_enhe/ambiguity.py
 
-Гистограмма (he->en)
+Гистограмма (he->en):
+
+![](https://github.com/awant/lowResourceNMT/blob/master/translit_dist.png)
+
+
 
 | translation | count  | word | translations                                                                      |
 |-------------|--------|------|-----------------------------------------------------------------------------------|
