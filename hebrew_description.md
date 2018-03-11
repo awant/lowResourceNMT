@@ -38,3 +38,6 @@
 Две разные буквы алфавита могут передавать один и тот же звук.
 
 Подробнее http://speak-hebrew.ru/ivrit-russkii/
+
+Добавил сравнение - transliteration_compairing.txt
+Формат файла: he_word (dictionary_transliteration): translation \[references]
