@@ -13,7 +13,6 @@ def save_to_file(data, lang, dir, type):
         delimiter='\n', fmt='%s', encoding='utf-8'
     )
 
-
 def make_mapping(first, second):
     data_first = np.loadtxt(first, dtype='str', encoding='utf-8')
     data_second = np.loadtxt(second, dtype='str', encoding='utf-8')
@@ -25,7 +24,14 @@ def make_mapping(first, second):
 
     return mapping
 
-def make_small_datasets(datapath, train_size, test_size, dev_size):
+# unwind mapping
+def get_words_and_references(words, mapping):
+    pairs = []
+    for word in words:
+        pairs += [(word, ref_word) for ref_word in mapping[word]]
+    return list(zip(*pairs))
+
+def make_small_datasets(datapath, train_size, test_size, dev_size, all_transliterations):
     np.random.seed(42)
 
     if datapath.endswith('/'):
@@ -62,8 +68,13 @@ def make_small_datasets(datapath, train_size, test_size, dev_size):
     new_test_words = words[new_ix[train_size: -dev_size]]
     new_dev_words = words[new_ix[-dev_size:]]
 
-    new_train_translations = [mapping[word].pop() for word in new_train_words]
-    new_dev_translations = [mapping[word].pop() for word in new_dev_words]
+    if all_transliterations:
+        new_train_words, new_train_translations = get_words_and_references(new_train_words, mapping)
+        new_dev_words, new_dev_translations = get_words_and_references(new_dev_words, mapping)
+    else:
+        new_train_translations = [mapping[word].pop() for word in new_train_words]
+        new_dev_translations = [mapping[word].pop() for word in new_dev_words]
+    
     new_test_translations = ['\t'.join([translation for translation in mapping[word]]) for word in new_test_words]
 
     new_prefix = "{}-{}k".format(prefix, train_size // 1000)
@@ -86,13 +97,14 @@ def make_small_datasets(datapath, train_size, test_size, dev_size):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--datadir', action='store', type=str,
+    parser.add_argument('--datadir', action='store', type=str, required=True,
                         help='Directory of original dataset. Should have .test.txt, .dev.txt, .train.txt files in it.')
-    parser.add_argument('--train_size', action='store', type=int, help='train sample size')
-    parser.add_argument('--test_size', action='store', type=int, help='test sample size')
-    parser.add_argument('--dev_size', action='store', type=int, help='dev sample size')
+    parser.add_argument('--train_size', action='store', type=int, required=True, help='train sample size')
+    parser.add_argument('--test_size', action='store', type=int, required=True, help='test sample size')
+    parser.add_argument('--dev_size', action='store', type=int, required=True, help='dev sample size')
+    parser.add_argument('--all_transliterations', action='store', type=bool, default=False,
+                        help='Add all transliteration choices to train/dev sets')
 
     args = parser.parse_args()
 
-    make_small_datasets(args.datadir, 1000*args.train_size, 1000*args.test_size, 1000*args.dev_size)
-
+    make_small_datasets(args.datadir, 1000*args.train_size, 1000*args.test_size, 1000*args.dev_size, args.all_transliterations)
