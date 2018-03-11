@@ -4,6 +4,9 @@ Improve a baseline NMT system trained on a very small parallel corpus using eith
 ### Datasets:
 https://yadi.sk/d/xUKsoX-G3T6ZYc
 
+### Workflow board:
+https://trello.com/b/f3kcPkqm/low-resource-nmt
+
 ### Read articles:
 1) Transfer Learning for Low-Resource Neural Machine Translation
 2) Zero-shot translation
