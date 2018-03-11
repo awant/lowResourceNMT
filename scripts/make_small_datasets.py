@@ -1,8 +1,9 @@
+#!/usr/bin/env python3
+
 import argparse
 import numpy as np
 import os
 from collections import defaultdict
-
 
 def save_to_file(data, lang, dir, type):
     np.savetxt(X=data, fname=os.path.join(
@@ -24,8 +25,9 @@ def make_mapping(first, second):
 
     return mapping
 
-
 def make_small_datasets(datapath, train_size, test_size, dev_size):
+    np.random.seed(42)
+
     if datapath.endswith('/'):
         datapath = datapath[:-1]
 
@@ -84,11 +86,13 @@ def make_small_datasets(datapath, train_size, test_size, dev_size):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('datadir', action='store', type=str,
+    parser.add_argument('--datadir', action='store', type=str,
                         help='Directory of original dataset. Should have .test.txt, .dev.txt, .train.txt files in it.')
-    parser.add_argument('train_size', action='store', type=int, help='train sample size')
-    parser.add_argument('test_size', action='store', type=int, help='test sample size')
-    parser.add_argument('dev_size', action='store', type=int, help='dev sample size')
+    parser.add_argument('--train_size', action='store', type=int, help='train sample size')
+    parser.add_argument('--test_size', action='store', type=int, help='test sample size')
+    parser.add_argument('--dev_size', action='store', type=int, help='dev sample size')
 
     args = parser.parse_args()
+
     make_small_datasets(args.datadir, 1000*args.train_size, 1000*args.test_size, 1000*args.dev_size)
+
