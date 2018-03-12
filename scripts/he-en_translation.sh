@@ -5,6 +5,7 @@
 TRAIN_SIZE=236
 TEST_SIZE=29
 DEV_SIZE=29
+
 PROBLEM=translate_he_to_en
 MODEL=transformer
 HPARAMS=transformer_enhe
@@ -22,7 +23,6 @@ TRAIN_STEPS=10000
 
 while [ -n "$1" ]
 do
-echo "MENE $1"
 case "$1" in
 --train_size) TRAIN_SIZE=$2
 shift;;
@@ -42,7 +42,6 @@ shift;;
 shift;;
 --train_steps) TRAIN_STEPS=$2
 shift;;
-
 
 
 --data_dir) DATA_DIR=$2
