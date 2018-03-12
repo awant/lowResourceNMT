@@ -30,4 +30,4 @@ Inducing Bilingual Lexica From Non-Parallel Data With Earth Mover’s Distance R
 
 ### How to run train-and-evaluation with he-en:
 1) place your data in data/t2t_data/* (en.train.txt, he.train.txt - train, dev, test generate from these files)
-2) run t2t_translation.sh
+2) run he-en_translation.sh
