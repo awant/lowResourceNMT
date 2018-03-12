@@ -7,6 +7,11 @@ https://yadi.sk/d/xUKsoX-G3T6ZYc
 ### Workflow board:
 https://trello.com/b/f3kcPkqm/low-resource-nmt
 
+
+### Results:
+Dataset | Model | Parameters | Score
+------- | ----- | ---------- | -----
+
 ### Read articles:
 Attention Is All You Need https://arxiv.org/abs/1706.03762
 
