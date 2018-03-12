@@ -20,6 +20,7 @@ USR_DIR=$ROOT_DATA_DIR/translate_enhe
 BEAM_SIZE=4
 ALPHA=0.6
 TRAIN_STEPS=10000
+OTHER_PARAMS=""
 
 while [ -n "$1" ]
 do
@@ -42,6 +43,8 @@ shift;;
 shift;;
 --train_steps) TRAIN_STEPS=$2
 shift;;
+--other_params) OTHER_PARAMS=$2
+shift;;
 
 
 --data_dir) DATA_DIR=$2
@@ -56,7 +59,7 @@ shift;;
 shift;;
 
 *) echo "$1 unknown option"
-exit 1;;
+exit;;
 esac
 shift
 done
@@ -87,7 +90,7 @@ t2t-trainer \
   --problems=$PROBLEM \
   --model=$MODEL \
   --hparams_set=$HPARAMS \
-  --hparams='batch_size=$BATCH_SIZE' \
+  --hparams='batch_size=$BATCH_SIZE $OTHER_PARAMS' \
   --output_dir=$TRAIN_DIR \
   --train_steps=$TRAIN_STEPS \
   --t2t_usr_dir=$USR_DIR
