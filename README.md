@@ -7,6 +7,8 @@ https://yadi.sk/d/xUKsoX-G3T6ZYc
 ### Workflow board:
 https://trello.com/b/f3kcPkqm/low-resource-nmt
 
+### Tensor2Tensor
+[Forked Tensor2Tensor version](https://github.com/AlAntonov/tensor2tensor)
 
 ### Results:
 Dataset | Model | Parameters | Score
