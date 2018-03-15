@@ -15,25 +15,27 @@ Dataset | Model | Parameters | Score
 ------- | ----- | ---------- | -----
 
 ### Read articles:
-Attention Is All You Need https://arxiv.org/abs/1706.03762
+[Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 
-Unsupervised Neural Machine Translation Using Monolingual Corpora Only https://arxiv.org/pdf/1711.00043
+[Unsupervised Neural Machine Translation Using Monolingual Corpora Only](https://arxiv.org/pdf/1711.00043)
 
-Zero-shot translation https://arxiv.org/pdf/1611.04558
+[Zero-shot translation](https://arxiv.org/pdf/1611.04558)
 
-Dual learning for Machine Translation https://arxiv.org/abs/1611.00179 
+[Dual learning for Machine Translation](https://arxiv.org/abs/1611.00179)
 
-Transfer Learning for Low-Resource Neural Machine Translation https://www.aclweb.org/anthology/D16-1163
+[Transfer Learning for Low-Resource Neural Machine Translation](https://www.aclweb.org/anthology/D16-1163)
 
-Adversarial Neural Machine Translation https://arxiv.org/abs/1704.06933
+[Adversarial Neural Machine Translation](https://arxiv.org/abs/1704.06933)
 
-Improving Neural Machine Translation with Conditional Sequence Generative Adversarial Nets https://arxiv.org/pdf/1703.04887
+[Improving Neural Machine Translation with Conditional Sequence Generative Adversarial Nets](https://arxiv.org/pdf/1703.04887)
 
-On Using Monolingual Corpora in Neural Machine Translation http://arxiv.org/abs/1503.03535
+[On Using Monolingual Corpora in Neural Machine Translation](http://arxiv.org/abs/1503.03535)
 
-Improving Neural Machine Translation Models with Monolingual Data http://arxiv.org/abs/1511.06709
+[Improving Neural Machine Translation Models with Monolingual Data](http://arxiv.org/abs/1511.06709)
 
-Inducing Bilingual Lexica From Non-Parallel Data With Earth Mover’s Distance Regularization http://aclweb.org/anthology/C16-1300.pdf
+[Inducing Bilingual Lexica From Non-Parallel Data With Earth Mover’s Distance Regularization](http://aclweb.org/anthology/C16-1300.pdf)
+
+[Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/pdf/1803.00353.pdf)
 
 ### How to run train-and-evaluation with he-en:
 1) place your data in data/t2t_data/* (en.train.txt, he.train.txt - train, dev, test generate from these files)
