@@ -35,6 +35,12 @@ Dataset | Model | Parameters | Score
 
 [Inducing Bilingual Lexica From Non-Parallel Data With Earth Mover’s Distance Regularization](http://aclweb.org/anthology/C16-1300.pdf)
 
+[Exploiting Source-side Monolingual Data in Neural Machine Translation](https://pdfs.semanticscholar.org/cf58/f472413073009134e24c466b5a7385a14126.pdf)
+
+[Unsupervised Pretraining for Sequence to Sequence Learning](http://aclweb.org/anthology/D17-1039)
+
+[Universal Neural Machine Translation for Extremely Low Resource Languages](https://arxiv.org/pdf/1802.05368.pdf)
+
 [Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/pdf/1803.00353.pdf)
 
 ### How to run train-and-evaluation with he-en:
