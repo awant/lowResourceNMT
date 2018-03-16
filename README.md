@@ -43,6 +43,8 @@ Dataset | Model | Parameters | Score
 
 [Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/pdf/1803.00353.pdf)
 
+[Unsupervised Neural Machine Translation](https://arxiv.org/pdf/1710.11041v2.pdf)
+
 ### How to run train-and-evaluation with he-en:
 1) place your data in data/t2t_data/* (en.train.txt, he.train.txt - train, dev, test generate from these files)
 2) run he-en_translation.sh (with options, train/dev/test sizes, etc - check script for more info)
