@@ -152,7 +152,7 @@ if __name__ == '__main__':
     parser.add_argument('--train_size', action='store', type=float, help='train sample size')
     parser.add_argument('--test_size', action='store', type=float, help='test sample size')
     parser.add_argument('--dev_size', action='store', type=float, help='dev sample size')
-    parser.add_argument('--all_transliterations', action='store', type=bool, default=False,
+    parser.add_argument('--all_transliterations', action='store', type=bool, default=True,
                         help='Add all transliteration choices to train/dev sets')
 
     args = parser.parse_args()
