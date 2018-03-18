@@ -38,7 +38,7 @@ def get_words_and_references(words, mapping):
         pairs += [(word, ref_word) for ref_word in mapping[word]]
     return list(zip(*pairs))
 
-def make_small_datasets(datapath, train_size, test_size, dev_size, all_transliterations):
+def make_small_datasets(datapath, train_size, test_size, dev_size, all_transliterations=True):
     np.random.seed(42)
     train_dev_test_sizes_ar = [train_size, dev_size, test_size]
 
