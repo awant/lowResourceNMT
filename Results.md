@@ -1,14 +1,22 @@
+## Results
+
+0. [Info](#0-info)
+1. [Baseline](#1-baseline)
+2. [Back-Forward Translation](#2-back-forward-translation)
+
+### 0. Info
+
 1. bleu is nltk-bleu
 
 2. one batch per step is viewed
 
 3. batch_size is 4096
 
-## Baseline
+### 1. Baseline
 
-### hebrew-english
+#### hebrew-english
 
-#### single-random-reference mode
+##### single-random-reference mode
 
 results on new test ~ 29K
 
@@ -48,7 +56,7 @@ steps, K | bleu
 22 | 67.6
 23 | 67.8
 
-#### all-reference mode
+##### all-reference mode
 
 236K train size:
 
@@ -96,3 +104,17 @@ steps | bleu
 18K | 48.79
 19K | 52.30
 20K | 46.69
+
+### 2. Back-Forward Translation
+
+
+results on new test ~ 29K:
+
+setup | bleu
+------|-----
+100% train | 67
+10% train | 42
+10% train + 90% forward translated | 38
+10% train + 90% back translated | 33
+
+![curves](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/d3badcb53695275879fbcc0000aada3e/forward.back.translate.png)
