@@ -159,7 +159,7 @@ for ((i=1;i<=$TRAIN_STEPS;i++)); do
     --hparams_set=$HPARAMS \
     --hparams="batch_size=$BATCH_SIZE $OTHER_PARAMS" \
     --output_dir=$TRAIN_DIR \
-    --train_steps=$TRAIN_STEPS \
+    --train_steps=$ITERATION_SIZE \
     --t2t_usr_dir=$USR_DIR
 
   
