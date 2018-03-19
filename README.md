@@ -47,6 +47,11 @@ Dataset | Model | Parameters | Score
 
 [Unsupervised Neural Machine Translation](https://arxiv.org/pdf/1710.11041v2.pdf)
 
+[Learning principled bilingual mappings of word embeddings while
+preserving monolingual invariance](https://aclweb.org/anthology/D16-1250)
+
+[Learning bilingual word embeddings with (almost) no bilingual data](http://aclweb.org/anthology/P17-1042)
+
 ### How to run train-and-evaluation with he-en:
 1) place your data in data/t2t_data/* (en.train.txt, he.train.txt - train, dev, test generate from these files)
 2) run he-en_translation.sh (with options, train/dev/test sizes, etc - check script for more info)
