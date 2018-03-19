@@ -38,7 +38,7 @@ def get_words_and_references(words, mapping):
         pairs += [(word, ref_word) for ref_word in mapping[word]]
     return list(zip(*pairs))
 
-def make_small_datasets(datapath, train_size, test_size, dev_size, all_transliterations):
+def make_small_datasets(datapath, train_size, test_size, dev_size, all_transliterations=True):
     np.random.seed(42)
     train_dev_test_sizes_ar = [train_size, dev_size, test_size]
 
@@ -152,7 +152,7 @@ if __name__ == '__main__':
     parser.add_argument('--train_size', action='store', type=float, help='train sample size')
     parser.add_argument('--test_size', action='store', type=float, help='test sample size')
     parser.add_argument('--dev_size', action='store', type=float, help='dev sample size')
-    parser.add_argument('--all_transliterations', action='store', type=bool, default=False,
+    parser.add_argument('--all_transliterations', action='store', type=bool, default=True,
                         help='Add all transliteration choices to train/dev sets')
 
     args = parser.parse_args()

@@ -29,4 +29,3 @@ if __name__ == '__main__':
     parser.add_argument('--checkpoint_dir', type=str, help='directory to set of checkpoints')
     args = parser.parse_args()
     bleu = compute_bleu_set(args.reference, args.translation_dir, args.checkpoint_dir)
-    print(bleu)
