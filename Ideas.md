@@ -38,3 +38,11 @@ Parent model: French–English, child model: Uzbek–English.
 English word embeddings from parent model are copied.
 Uzbek words are initially mapped to random French embeddings.
 English embeddings are frozen.
+
+5) Dual Learning for Machine Translation
+
+Reinforcement learning with language models
+
+Two-agent communication game:
+A -> B, B -> A.
+2 language models, 2 translation models. s -> s_{middle} -> s'
