@@ -21,10 +21,6 @@ or directly from github:
 pip install git+https://github.com/AlAntonov/tensor2tensor
  ```
 
-### Results:
-Dataset | Model | Parameters | Score
-------- | ----- | ---------- | -----
-
 ### Read articles:
 [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 
