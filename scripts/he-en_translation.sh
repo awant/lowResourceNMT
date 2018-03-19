@@ -19,8 +19,11 @@ TRAIN_DIR=$ROOT_DATA_DIR/data/t2t_train/$PROBLEM/$MODEL-$HPARAMS
 USR_DIR=$ROOT_DATA_DIR/translate_enhe
 BEAM_SIZE=4
 ALPHA=0.6
-TRAIN_STEPS=10000
+TRAIN_STEPS=10
+ITERATION_SIZE=1000
 OTHER_PARAMS=""
+DATAGEN=1
+MOVE_MODEL=1
 
 while [ -n "$1" ]
 do
@@ -43,6 +46,8 @@ shift;;
 shift;;
 --train_steps) TRAIN_STEPS=$2
 shift;;
+--iteration_size) ITERATION_SIZE=$2
+shift;;
 --other_params) OTHER_PARAMS=$2
 shift;;
 
@@ -58,6 +63,11 @@ shift;;
 --alpha) ALPHA=$2
 shift;;
 
+--continue) DATAGEN=0
+MOVE_MODEL=0;;
+--data_exists) DATAGEN=0;;
+
+
 *) echo "$1 unknown option"
 exit;;
 esac
@@ -68,50 +78,100 @@ if [ ! -f $DATA_DIR/he.train.txt ] || [ ! -f $DATA_DIR/en.train.txt ]; then
     echo "Train data doesn't exist!"
     exit
 fi
-
 # Split train-dev-test data, train/dev/test in k: 10k means 10000
-python3 $ROOT_DATA_DIR/scripts/make_small_datasets.py --datadir=$DATA_DIR --train_size=$TRAIN_SIZE --test_size=$TEST_SIZE --dev_size=$DEV_SIZE
+if [[ $DATAGEN -eq 1 ]]; then
+  
+    python3 $ROOT_DATA_DIR/scripts/make_small_datasets.py --datadir=$DATA_DIR --train_size=$TRAIN_SIZE --test_size=$TEST_SIZE --dev_size=$DEV_SIZE
+    cp $DATA_DIR/en.test.txt $ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k/en_old.test.txt
+    cp $DATA_DIR/he.test.txt $ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k/he_old.test.txt
+    cp $DATA_DIR/en.dev.txt $ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k/en_old.dev.txt
+    cp $DATA_DIR/he.dev.txt $ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k/he_old.dev.txt
 
+    DATA_DIR=$ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k
+    DECODE_FILE=$DATA_DIR/he.test.txt
+    TEST_REFS=$DATA_DIR/en.test.txt # several refs can be separated by tabs
+    OLD_TEST=($DATA_DIR/en_old.test.txt $DATA_DIR/he_old.test.txt)
+    OLD_DEV_EN=$DATA_DIR/en_old.dev.txt
+    OLD_DEV_HE=$DATA_DIR/he_old.dev.txt
+    # Generate data
+    T2T_DATAGEN_PATH=t2t-datagen
+    $T2T_DATAGEN_PATH \
+      --data_dir=$DATA_DIR \
+      --tmp_dir=$TMP_DIR \
+      --problem=$PROBLEM \
+      --t2t_usr_dir=$USR_DIR
+        
+fi
+STAMP=$(date  "+_%Y_%m_%d_%H_%M_%S")
+if [[ $MOVE_MODEL -eq 1 ]]; then 
+    echo "MOVING MODE FROM $TRAIN_DIR"  
+    if [[ -d $TRAIN_DIR ]]; then 
+      mv $TRAIN_DIR "$TRAIN_DIR$STAMP"
+      echo "MODEL MOVED"
+    fi
+fi
 DATA_DIR=$ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k
 DECODE_FILE=$DATA_DIR/he.test.txt
 TEST_REFS=$DATA_DIR/en.test.txt # several refs can be separated by tabs
+DEV=($DATA_DIR/en.dev.txt $DATA_DIR/he.dev.txt)
+TEST=($DATA_DIR/en.test.txt $DATA_DIR/he.test.txt)
+OLD_TEST=($DATA_DIR/en_old.test.txt $DATA_DIR/he_old.test.txt)
+OLD_DEV=($DATA_DIR/en_old.dev.txt $DATA_DIR/he_old.dev.txt)
 
-# Generate data
-T2T_DATAGEN_PATH=t2t-datagen
-$T2T_DATAGEN_PATH \
-  --data_dir=$DATA_DIR \
-  --tmp_dir=$TMP_DIR \
-  --problem=$PROBLEM \
-  --t2t_usr_dir=$USR_DIR
 
-# Train data
-t2t-trainer \
-  --data_dir=$DATA_DIR \
-  --problems=$PROBLEM \
-  --model=$MODEL \
-  --hparams_set=$HPARAMS \
-  --hparams="batch_size=$BATCH_SIZE $OTHER_PARAMS" \
-  --output_dir=$TRAIN_DIR \
-  --train_steps=$TRAIN_STEPS \
-  --t2t_usr_dir=$USR_DIR
+compute_bleu() {
+  t2t-decoder \
+    --data_dir=$DATA_DIR \
+    --problems=$PROBLEM \
+    --model=$MODEL \
+    --hparams_set=$HPARAMS \
+    --output_dir=$TRAIN_DIR \
+    --decode_hparams="beam_size=$BEAM_SIZE,alpha=$ALPHA" \
+    --decode_from_file=$2 \
+    --decode_to_file=$DATA_DIR/he-to-en.translit.txt \
+    --t2t_usr_dir=$USR_DIR
+  python3 $ROOT_DATA_DIR/scripts/compute_bleu.py --translation=$DATA_DIR/he-to-en.translit.txt --reference=$1 >> $3
+  echo $1
+  echo $2
+  echo $3
+}
 
-# Compute transliterations
-t2t-decoder \
-  --data_dir=$DATA_DIR \
-  --problems=$PROBLEM \
-  --model=$MODEL \
-  --hparams_set=$HPARAMS \
-  --output_dir=$TRAIN_DIR \
-  --decode_hparams="beam_size=$BEAM_SIZE,alpha=$ALPHA" \
-  --decode_from_file=$DECODE_FILE \
-  --decode_to_file=$DATA_DIR/he-to-en.translit.txt \
-  --t2t_usr_dir=$USR_DIR
+TEST_LOG=$TRAIN_DIR/test_log.txt
+DEV_LOG=$TRAIN_DIR/dev_log.txt
+OLD_TEST_LOG=$TRAIN_DIR/old_test_log.txt
+OLD_DEV_LOG=$TRAIN_DIR/old_dev_log.txt
+for i in $TEST_LOG $DEV_LOG $OLD_DEV_LOG $OLD_TEST_LOG
+do 
+  echo $i
+  if [[ -f $i ]]; then
+    echo "EXIST $i"
+    mv $i $i$STAMP
+  fi
+done
+mkdir $TRAIN_DIR
+for ((i=1;i<=$TRAIN_STEPS;i++)); do
+  echo $(($i * $ITERATION_SIZE));
+  #train step
+  t2t-trainer \
+    --data_dir=$DATA_DIR \
+    --problems=$PROBLEM \
+    --model=$MODEL \
+    --hparams_set=$HPARAMS \
+    --hparams="batch_size=$BATCH_SIZE $OTHER_PARAMS" \
+    --output_dir=$TRAIN_DIR \
+    --train_steps=$TRAIN_STEPS \
+    --t2t_usr_dir=$USR_DIR
 
-# Compute bleu
-python3 $ROOT_DATA_DIR/scripts/compute_bleu.py --translation=$DATA_DIR/he-to-en.translit.txt --reference=$TEST_REFS
+  exit
+  #eval steps
+  compute_bleu ${TEST[*]} $TEST_LOG
+  compute_bleu ${DEV[*]} $DEV_LOG
+  compute_bleu ${OLD_TEST[*]} $OLD_TEST_LOG
+  compute_bleu ${OLD_DEV[*]} $OLD_DEV_LOG  
+  python3  $TRAIN_DIR/plot.png $TEST_LOG $DEV_LOG $OLD_TEST_LOG $OLD_DEV_LOG
+done 
 
 # For troubles:
 # check that problem/hparams registered with (find your mods):
 # t2t-trainer --t2t_usr_dir=$USR_DIR --registry_help
 # If you run out of memory, when train: add --hparams='batch_size=1024'
-
