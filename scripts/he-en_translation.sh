@@ -80,7 +80,7 @@ if [ ! -f $DATA_DIR/he.train.txt ] || [ ! -f $DATA_DIR/en.train.txt ]; then
 fi
 # Split train-dev-test data, train/dev/test in k: 10k means 10000
 if [[ $DATAGEN -eq 1 ]]; then
-  
+
     python3 $ROOT_DATA_DIR/scripts/make_small_datasets.py --datadir=$DATA_DIR --train_size=$TRAIN_SIZE --test_size=$TEST_SIZE --dev_size=$DEV_SIZE
     cp $DATA_DIR/en.test.txt $ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k/en_old.test.txt
     cp $DATA_DIR/he.test.txt $ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k/he_old.test.txt
@@ -162,7 +162,7 @@ for ((i=1;i<=$TRAIN_STEPS;i++)); do
     --train_steps=$TRAIN_STEPS \
     --t2t_usr_dir=$USR_DIR
 
-  exit
+  
   #eval steps
   compute_bleu ${TEST[*]} $TEST_LOG
   compute_bleu ${DEV[*]} $DEV_LOG
