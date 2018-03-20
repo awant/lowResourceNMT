@@ -77,6 +77,8 @@ steps | bleu
 
 results on old dev ~ 4K:
 
+he-en
+
 steps | bleu
 ------|-----
 11K | 56.29
@@ -89,6 +91,23 @@ steps | bleu
 18K | 59.52
 19K | 58.97
 20K | 59.14
+
+
+en-he
+
+steps | bleu
+------|-----
+4K | 61.07
+5K | 66.86
+6K | 68.86
+7K | 70.81
+8K | 71.06
+9K | 73.22
+10K | 73.71
+11K | 74.29
+12K | 74.99
+13K | 75.27
+14K | 75.77
 
 results on old test ~ 1K:
 
@@ -118,3 +137,5 @@ setup | bleu
 10% train + 90% back translated | 33
 
 ![curves](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/d3badcb53695275879fbcc0000aada3e/forward.back.translate.png)
+
+
