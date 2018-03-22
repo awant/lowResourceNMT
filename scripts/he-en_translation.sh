@@ -22,8 +22,8 @@ ALPHA=0.6
 TRAIN_STEPS=10
 ITERATION_SIZE=1000
 OTHER_PARAMS=""
-DATAGEN=1
-MOVE_MODEL=1
+DATAGEN=0
+MOVE_MODEL=0
 
 while [ -n "$1" ]
 do
@@ -63,10 +63,16 @@ shift;;
 --alpha) ALPHA=$2
 shift;;
 
---continue) DATAGEN=0
-MOVE_MODEL=0;;
---data_exists) DATAGEN=0;;
+--update_data) DATAGEN=1;;
 
+
+--update_model) MOVE_MODEL=1;;
+
+--new) DATAGEN=1
+MOVE_MODEL=1;;
+
+--epoch) TRAIN_STEPS=$2
+let "ITERATION_SIZE = ($TRAIN_SIZE * 1000 + $BATCH_SIZE - 1) / $BATCH_SIZE";;
 
 *) echo "$1 unknown option"
 exit;;
@@ -79,7 +85,7 @@ if [ ! -f $DATA_DIR/he.train.txt ] || [ ! -f $DATA_DIR/en.train.txt ]; then
     exit
 fi
 # Split train-dev-test data, train/dev/test in k: 10k means 10000
-if [[ $DATAGEN -eq 1 ]]; then
+if [[ $UPDATE_DATA -eq 1 ]]; then
 
     python3 $ROOT_DATA_DIR/scripts/make_small_datasets.py --datadir=$DATA_DIR --train_size=$TRAIN_SIZE --test_size=$TEST_SIZE --dev_size=$DEV_SIZE
     cp $DATA_DIR/en.test.txt $ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k/en_old.test.txt
@@ -159,7 +165,7 @@ for ((i=1;i<=$TRAIN_STEPS;i++)); do
     --hparams_set=$HPARAMS \
     --hparams="batch_size=$BATCH_SIZE $OTHER_PARAMS" \
     --output_dir=$TRAIN_DIR \
-    --train_steps=$ITERATION_SIZE \
+    --train_steps=$ITERATION_SIZE     \
     --t2t_usr_dir=$USR_DIR
 
   
