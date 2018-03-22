@@ -10,9 +10,16 @@ https://trello.com/b/f3kcPkqm/low-resource-nmt
 ### Tensor2Tensor
 [Forked Tensor2Tensor version](https://github.com/AlAntonov/tensor2tensor)
 
-### Results:
-Dataset | Model | Parameters | Score
-------- | ----- | ---------- | -----
+Install from local dir: 
+ ```sh 
+pip install -e tensor2tensor/
+ ```
+ 
+or directly from github:
+
+ ```sh
+pip install git+https://github.com/AlAntonov/tensor2tensor
+ ```
 
 ### Read articles:
 [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
@@ -44,6 +51,11 @@ Dataset | Model | Parameters | Score
 [Joint Training for Neural Machine Translation Models with Monolingual Data](https://arxiv.org/pdf/1803.00353.pdf)
 
 [Unsupervised Neural Machine Translation](https://arxiv.org/pdf/1710.11041v2.pdf)
+
+[Learning principled bilingual mappings of word embeddings while
+preserving monolingual invariance](https://aclweb.org/anthology/D16-1250)
+
+[Learning bilingual word embeddings with (almost) no bilingual data](http://aclweb.org/anthology/P17-1042)
 
 ### How to run train-and-evaluation with he-en:
 1) place your data in data/t2t_data/* (en.train.txt, he.train.txt - train, dev, test generate from these files)

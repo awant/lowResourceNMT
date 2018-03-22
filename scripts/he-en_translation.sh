@@ -154,7 +154,9 @@ do
     mv $i $i$STAMP
   fi
 done
-mkdir $TRAIN_DIR
+if [[ ! -d $TRAIN_DIR ]]; then 
+    mkdir $TRAIN_DIR
+fi
 for ((i=1;i<=$TRAIN_STEPS;i++)); do
   echo $(($i * $ITERATION_SIZE));
   #train step
