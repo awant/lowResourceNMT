@@ -4,6 +4,9 @@ Improve a baseline NMT system trained on a very small parallel corpus using eith
 ### Datasets:
 https://yadi.sk/d/xUKsoX-G3T6ZYc
 
+en-ru parallel data: https://translate.yandex.ru/corpus
+(just fill fields and you immediately get corpus)
+
 ### Workflow board:
 https://trello.com/b/f3kcPkqm/low-resource-nmt
 
