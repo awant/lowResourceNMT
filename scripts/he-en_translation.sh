@@ -22,7 +22,7 @@ ALPHA=0.6
 TRAIN_STEPS=10
 ITERATION_SIZE=1000
 OTHER_PARAMS=""
-DATAGEN=0
+UPDATE_DATA=0
 MOVE_MODEL=0
 
 while [ -n "$1" ]
@@ -63,12 +63,12 @@ shift;;
 --alpha) ALPHA=$2
 shift;;
 
---update_data) DATAGEN=1;;
+--update_data) UPDATE_DATA=1;;
 
 
 --update_model) MOVE_MODEL=1;;
 
---new) DATAGEN=1
+--new) UPDATE_DATA=1
 MOVE_MODEL=1;;
 
 --epoch) TRAIN_STEPS=$2
