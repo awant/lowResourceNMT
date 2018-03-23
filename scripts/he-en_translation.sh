@@ -12,11 +12,12 @@ HPARAMS=transformer_enhe
 BATCH_SIZE=4096
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ROOT_DATA_DIR=$SCRIPT_DIR/..
-DATA_DIR=$ROOT_DATA_DIR/data/t2t_data
-TMP_DIR=$ROOT_DATA_DIR/data/t2t_datagen
-TRAIN_DIR=$ROOT_DATA_DIR/data/t2t_train/$PROBLEM/$MODEL-$HPARAMS
-USR_DIR=$ROOT_DATA_DIR/translate_enhe
+ROOT_DIR=$SCRIPT_DIR/..
+ROOT_DATA_DIR=$ROOT_DIR/data
+DATA_DIR=$ROOT_DIR/data/t2t_data
+TMP_DIR=$ROOT_DIR/data/t2t_datagen
+TRAIN_DIR=$ROOT_DIR/data/t2t_train/$PROBLEM/$MODEL-$HPARAMS
+USR_DIR=$ROOT_DIR/translate_enhe
 BEAM_SIZE=4
 ALPHA=0.6
 TRAIN_STEPS=10
@@ -53,6 +54,9 @@ shift;;
 
 
 --data_dir) DATA_DIR=$2
+ROOT_DATA_DIR=$DATA_DIR/..
+TMP_DIR=$DATA_DIR/../data/t2t_datagen
+TRAIN_DIR=$DATA_DIR/../data/t2t_train/$PROBLEM/$MODEL-$HPARAMS
 shift;;
 --usr_dir) USR_DIR=$2
 shift;;
@@ -84,30 +88,43 @@ if [ ! -f $DATA_DIR/he.train.txt ] || [ ! -f $DATA_DIR/en.train.txt ]; then
     echo "Train data doesn't exist!"
     exit
 fi
+echo $ROOT_DATA_DIR
+echo $ROOT_DIR
+echo $TRAIN_DIR
 # Split train-dev-test data, train/dev/test in k: 10k means 10000
 if [[ $UPDATE_DATA -eq 1 ]]; then
 
-    python3 $ROOT_DATA_DIR/scripts/make_small_datasets.py --datadir=$DATA_DIR --train_size=$TRAIN_SIZE --test_size=$TEST_SIZE --dev_size=$DEV_SIZE
-    cp $DATA_DIR/en.test.txt $ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k/en_old.test.txt
-    cp $DATA_DIR/he.test.txt $ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k/he_old.test.txt
-    cp $DATA_DIR/en.dev.txt $ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k/en_old.dev.txt
-    cp $DATA_DIR/he.dev.txt $ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k/he_old.dev.txt
+    python3 $ROOT_DIR/scripts/make_small_datasets.py --datadir=$DATA_DIR --train_size=$TRAIN_SIZE --test_size=$TEST_SIZE --dev_size=$DEV_SIZE
+    cp $DATA_DIR/en.test.txt $DATA_DIR-${TRAIN_SIZE}k/en_old.test.txt
+    cp $DATA_DIR/he.test.txt $DATA_DIR-${TRAIN_SIZE}k/he_old.test.txt
+    cp $DATA_DIR/en.dev.txt $DATA_DIR-${TRAIN_SIZE}k/en_old.dev.txt
+    cp $DATA_DIR/he.dev.txt $DATA_DIR-${TRAIN_SIZE}k/he_old.dev.txt
 
-    DATA_DIR=$ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k
+    DATA_DIR=$DATA_DIR-${TRAIN_SIZE}k
     DECODE_FILE=$DATA_DIR/he.test.txt
     TEST_REFS=$DATA_DIR/en.test.txt # several refs can be separated by tabs
     OLD_TEST=($DATA_DIR/en_old.test.txt $DATA_DIR/he_old.test.txt)
     OLD_DEV_EN=$DATA_DIR/en_old.dev.txt
     OLD_DEV_HE=$DATA_DIR/he_old.dev.txt
     # Generate data
+    echo $DATA_DIR
     T2T_DATAGEN_PATH=t2t-datagen
     $T2T_DATAGEN_PATH \
       --data_dir=$DATA_DIR \
       --tmp_dir=$TMP_DIR \
       --problem=$PROBLEM \
       --t2t_usr_dir=$USR_DIR
-        
+else 
+    DATA_DIR=$DATA_DIR-${TRAIN_SIZE}k
+    DECODE_FILE=$DATA_DIR/he.test.txt
+    TEST_REFS=$DATA_DIR/en.test.txt # several refs can be separated by tabs
+    DEV=($DATA_DIR/en.dev.txt $DATA_DIR/he.dev.txt)
+    TEST=($DATA_DIR/en.test.txt $DATA_DIR/he.test.txt)
+    OLD_TEST=($DATA_DIR/en_old.test.txt $DATA_DIR/he_old.test.txt)
+    OLD_DEV=($DATA_DIR/en_old.dev.txt $DATA_DIR/he_old.dev.txt)
 fi
+
+
 STAMP=$(date  "+_%Y_%m_%d_%H_%M_%S")
 if [[ $MOVE_MODEL -eq 1 ]]; then 
     echo "MOVING MODE FROM $TRAIN_DIR"  
@@ -116,16 +133,11 @@ if [[ $MOVE_MODEL -eq 1 ]]; then
       echo "MODEL MOVED"
     fi
 fi
-DATA_DIR=$ROOT_DATA_DIR/data/t2t_data-${TRAIN_SIZE}k
-DECODE_FILE=$DATA_DIR/he.test.txt
-TEST_REFS=$DATA_DIR/en.test.txt # several refs can be separated by tabs
-DEV=($DATA_DIR/en.dev.txt $DATA_DIR/he.dev.txt)
-TEST=($DATA_DIR/en.test.txt $DATA_DIR/he.test.txt)
-OLD_TEST=($DATA_DIR/en_old.test.txt $DATA_DIR/he_old.test.txt)
-OLD_DEV=($DATA_DIR/en_old.dev.txt $DATA_DIR/he_old.dev.txt)
+
 
 
 compute_bleu() {
+  TMP_LOG=$DATA_DIR/log.tmp
   t2t-decoder \
     --data_dir=$DATA_DIR \
     --problems=$PROBLEM \
@@ -135,8 +147,9 @@ compute_bleu() {
     --decode_hparams="beam_size=$BEAM_SIZE,alpha=$ALPHA" \
     --decode_from_file=$2 \
     --decode_to_file=$DATA_DIR/he-to-en.translit.txt \
-    --t2t_usr_dir=$USR_DIR
-  python3 $ROOT_DATA_DIR/scripts/compute_bleu.py --translation=$DATA_DIR/he-to-en.translit.txt --reference=$1 >> $3
+    --t2t_usr_dir=$USR_DIR > $TMP_LOG
+  rm $TMP_LOG
+  python3 $ROOT_DIR/scripts/compute_bleu.py --translation=$DATA_DIR/he-to-en.translit.txt --reference=$1 >> $3
   echo $1
   echo $2
   echo $3
@@ -157,6 +170,7 @@ done
 if [[ ! -d $TRAIN_DIR ]]; then 
     mkdir $TRAIN_DIR
 fi
+echo 
 for ((i=1;i<=$TRAIN_STEPS;i++)); do
   echo $(($i * $ITERATION_SIZE));
   #train step
