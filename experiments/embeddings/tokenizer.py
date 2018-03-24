@@ -29,14 +29,9 @@ class SentenceTokenizer(object):
 	def detokenize(self, tokens):
 		source_text = ''
 		for token in tokens:
-			if token.startswith('#'):
-				source_text += token[1:]
-			else:
-				if source_text:
-					source_text += ' '
-				source_text += token
+			source_text += self.__detokenize_token(token)
 
-		return source_text
+		return source_text.lstrip()
 
 
 	def __tokenize_word(self, word):
@@ -47,3 +42,10 @@ class SentenceTokenizer(object):
 			return (stem, '#' + affix)
 		else:
 			return (stem, )
+
+
+	def __detokenize_token(self, token):
+		if token.startswith('#'):
+			return token[1:]
+		else:
+			return ' ' + token 
