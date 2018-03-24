@@ -25,11 +25,25 @@ class SentenceTokenizer(object):
 
 		return tokenized_sentence
 
+
+	def detokenize(self, tokens):
+		source_text = ''
+		for token in tokens:
+			if token.startswith('#'):
+				source_text += token[1:]
+			else:
+				if source_text:
+					source_text += ' '
+				source_text += token
+
+		return source_text
+
+
 	def __tokenize_word(self, word):
 		stem = self.__active_stemmer.stem(word)
 		affix = word[len(stem):]
 
 		if affix:
-			return (stem, affix)
+			return (stem, '#' + affix)
 		else:
 			return (stem, )
