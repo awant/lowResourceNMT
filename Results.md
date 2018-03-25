@@ -3,6 +3,7 @@
 0. [Info](#0-info)
 1. [Baseline](#1-baseline)
 2. [Back-Forward Translation](#2-back-forward-translation)
+3. [Transfer learning] (#3-transfer-learning)
 
 ### 0. Info
 
@@ -138,4 +139,6 @@ setup | bleu
 
 ![curves](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/d3badcb53695275879fbcc0000aada3e/forward.back.translate.png)
 
+
+### 3. Transfer learning
 
