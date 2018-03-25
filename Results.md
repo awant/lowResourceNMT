@@ -3,7 +3,8 @@
 0. [Info](#0-info)
 1. [Baseline](#1-baseline)
 2. [Back-Forward Translation](#2-back-forward-translation)
-3. [Transfer learning] (#3-transfer-learning)
+3. [Transfer learning](#3-transfer-learning)
+
 
 ### 0. Info
 
@@ -142,3 +143,4 @@ setup | bleu
 
 ### 3. Transfer learning
 
+Bla-bla-bla
