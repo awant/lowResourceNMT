@@ -1,3 +1,5 @@
+import argparse
+
 hebrew_transliteration = {
     u"\u0027": "",                 # '
 
@@ -140,14 +142,41 @@ hebrew_transliteration = {
     u"\u05D5" + u"\u05BC" +
     u"\u05D9" + u"\u05B0" +
     u"\u202C":             "UI",   # ( וּיְ‬ )
-
+    
+    #Special symbols
+    u"\u05F4":             "",     #	
+    u"\u05F3":             "",     #	
+    u"\u05BE":             "-",     # ־
 }
 
-if __name__ == '__main__':
-    mapping = hebrew_transliteration
+def mapp(key, mapping, iterator):
+    if key in mapping:
+        return mapping[key]
+    else:
+        print(iterator)
+        return ''
 
-    he_word = 'במדורות'
-    print(he_word)
-    print('transliteration: {}'.format('bimdurot'))
-    transliteration = ''.join([mapping[x] for x in he_word])
-    print('dict transliteration: {}'.format(transliteration))
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--file', action="store_true", help='If file - transliterate file, else - trasliterate word')
+    parser.add_argument('--file_name', type=str, help='path to file to transliterate')
+    args = parser.parse_args()	
+	
+    mapping = hebrew_transliteration
+    
+    if args.file:
+        file_name = args.file_name
+        tr_file = open(file_name + '-translit', 'w', encoding='utf-8')
+        i = 0
+        with open(file_name, encoding='utf-8', newline='') as fen:
+            for en_line in fen:
+                i = i + 1	  
+                transliteration = ''.join([mapp(x, mapping, i) for x in en_line.strip('\n')])
+                all = en_line.strip('\n') + ' - ' + transliteration
+                tr_file.write('%s\n' % all)
+    else:
+        he_word = 'במדורות'
+        print(he_word)
+        print('transliteration: {}'.format('bimdurot'))
+        transliteration = ''.join([mapp(x, mapping, 1) for x in he_word])
+        print('dict transliteration: {}'.format(transliteration))
