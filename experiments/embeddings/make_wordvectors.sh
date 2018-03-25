@@ -3,13 +3,13 @@
 #### Set your hyper-parameters here ####
 ############## START ###################
 lcode=$1 # ISO 639-1 code of target language. See `lcodes.txt`. example: ru, en
+part=$2 # from 0 to 1 - part of corpus
 max_corpus_size=1000000000 # the maximum size of the corpus. Feel free to adjust it according to your computing power.
 vector_size=300 # the size of a word vector
 window_size=5 # the maximum distance between the current and predicted word within a sentence.
 vocab_size=20000 # the maximum vocabulary size
 num_negative=5 # the int for negative specifies how many “noise words” should be drawn
 workers=24 # u definetily need to change that number
-part=0.0001
 ############## END #####################
 
 echo "step 0. Make 'data' directory."

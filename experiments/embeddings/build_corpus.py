@@ -123,6 +123,9 @@ def word_segment(sent):
     '''
     global lcode, ST
 
+    if sent is None:
+        return sent
+
     if lcode in ['ko']:
         words = [word for word, _ in kkma.pos(sent)]
     elif lcode in ['ja']:
@@ -142,39 +145,35 @@ def word_segment(sent):
 
     return words
 
+fout = None
 
 def build_text(text):
+    global fout
     if not np.random.binomial(n=1, p=part):
         return
     try:
         text = clean_text(text)
         sents = sentence_segment(text)
-        sents = [word_segment(sent) for sent in sents if sent is not None]
-        return [sent for sent in sents if len(sent) > 10]
+        sents = [word_segment(sent) for sent in sents]
+        sents = [sent for sent in sents if sent is not None and len(sent) > 10]
+        for words in sents:
+            fout.write(" ".join(words) + "\n")
     except:
         return
 
 
 def build_corpus():
-    global lcode, max_corpus_size, fname
+    global lcode, max_corpus_size, fname, fout
     from joblib import Parallel, delayed
     from tqdm import tqdm
 
 
     ns = "{http://www.mediawiki.org/xml/export-0.10/}" # namespace
-    with Parallel(n_jobs=workers) as parallel:
-        texts = parallel(delayed(build_text)(elem.text)
+    with codecs.open("data/{}.txt".format(lcode), 'w', 'utf-8') as _fout:
+        fout = _fout
+        with Parallel(n_jobs=workers) as parallel:
+            texts = parallel(delayed(build_text)(elem.text)
     for _, elem in tqdm(ET.iterparse("data/{}".format(fname), tag=ns+"text")))
-
-    with codecs.open("data/{}.txt".format(lcode), 'w', 'utf-8') as fout:
-        for sents in texts:
-            if sents is None:
-                continue
-            for words in sents:
-                if lcode in ['ja']:
-                    fout.write(" ".join(words).decode('utf8') + "\n")
-                else:
-                    fout.write(" ".join(words) + "\n")
 
 
 if __name__ == "__main__":
