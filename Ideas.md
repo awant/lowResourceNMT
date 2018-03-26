@@ -69,6 +69,7 @@ A -> B, B -> A.
 
 -) Unsupervised Neural Machine Translation Using Monolingual Corpora Only (similar idea/working on understanding)
 
-6) Zero-shot
+6) Zero-shot translation
+https://arxiv.org/pdf/1611.04558.pdf
 
 7) Combination of different models
