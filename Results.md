@@ -131,9 +131,10 @@ steps | bleu
 Results on 3k test set 
 #### english-russian
 Training curves
-##### TODO
+![epochs.png](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa6fec0cca08f5bd69bec27/8d59947189cbbd534afae99deee216a3/epochs.png) 
+![passes.png](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa6fec0cca08f5bd69bec27/beadeadda57b8f69eeee01312daa3b11/passes_(1).png) 
 Training size
-##### TODO
+![all.png](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa6fec0cca08f5bd69bec27/dc23060666ca539893b7b28d2a046dc4/all.png) 
 ### 3. Back-Forward Translation
 
 
