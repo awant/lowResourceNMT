@@ -68,3 +68,7 @@ A -> B, B -> A.
 2 language models, 2 translation models. s -> s_{middle} -> s'
 
 -) Unsupervised Neural Machine Translation Using Monolingual Corpora Only (similar idea/working on understanding)
+
+6) Zero-shot
+
+7) Combination of different models
