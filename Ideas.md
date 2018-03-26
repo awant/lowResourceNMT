@@ -9,10 +9,20 @@
 
 
 3) Semi-supervised (from other NMT tasks, e.g. make use of monolingual embeddings)
-Problem: Word2Vec works not quite well on subwords
-- stemming
-- coverage 
 
+Good starting point: https://arxiv.org/pdf/1710.11041v2.pdf
+
+3.1. Trained monolinugal Russian/English embeddings on Wikipedia dumps. 
+Tokenization: into stem/suffix (Snowball stemmer from nltk) 
+Embeddings: Word2Vec (CBOW, window size = 5)
+
+3.2. Shared embeddings space
+In process
+
+3.3. Encoder/Decoder model on shared embeddings
+Shared encoder maps to hidden state
+Two decoders for languages
+Training: alternate between Denoising, On-the-fly backtranslation and Low-resource translation
 
 
 4) Transfer learning from other NMT Task
