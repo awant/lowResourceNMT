@@ -2,8 +2,9 @@
 
 0. [Info](#0-info)
 1. [Baseline](#1-baseline)
-2. [Back-Forward Translation](#2-back-forward-translation)
-3. [Transfer learning](#3-transfer-learning)
+2. [Baseline translation](#2-translation-baseline)
+3. [Back-Forward Translation](#3-back-forward-translation)
+4. [Transfer learning](#4-transfer-learning)
 
 
 ### 0. Info
@@ -126,7 +127,14 @@ steps | bleu
 19K | 52.30
 20K | 46.69
 
-### 2. Back-Forward Translation
+### 2. Translation baseline
+Results on 3k test set 
+#### english-russian
+Training curves
+##### TODO
+Training size
+##### TODO
+### 3. Back-Forward Translation
 
 
 results on new test ~ 29K:
@@ -141,6 +149,6 @@ setup | bleu
 ![curves](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/d3badcb53695275879fbcc0000aada3e/forward.back.translate.png)
 
 
-### 3. Transfer learning
+### 4. Transfer learning
 
 Bla-bla-bla
