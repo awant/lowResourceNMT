@@ -1,0 +1,336 @@
+INFO:tensorflow:Importing user module custom_problems from path /home/rimarakulin/lowResourceNMT/transfer_learning
+[2018-03-26 14:53:41,761] Importing user module custom_problems from path /home/rimarakulin/lowResourceNMT/transfer_learning
+INFO:tensorflow:schedule=continuous_train_and_eval
+[2018-03-26 14:53:41,763] schedule=continuous_train_and_eval
+INFO:tensorflow:worker_gpu=2
+[2018-03-26 14:53:41,763] worker_gpu=2
+INFO:tensorflow:sync=False
+[2018-03-26 14:53:41,763] sync=False
+WARNING:tensorflow:Schedule=continuous_train_and_eval. Assuming that training is running on a single machine.
+[2018-03-26 14:53:41,764] Schedule=continuous_train_and_eval. Assuming that training is running on a single machine.
+INFO:tensorflow:datashard_devices: ['gpu:0', 'gpu:1']
+[2018-03-26 14:53:41,764] datashard_devices: ['gpu:0', 'gpu:1']
+INFO:tensorflow:caching_devices: None
+[2018-03-26 14:53:41,764] caching_devices: None
+INFO:tensorflow:ps_devices: ['gpu:0', 'gpu:1']
+[2018-03-26 14:53:41,764] ps_devices: ['gpu:0', 'gpu:1']
+INFO:tensorflow:Using config: {'_evaluation_master': '', 't2t_device_info': {'num_async_replicas': 1}, '_num_worker_replicas': 0, '_log_step_count_steps': 100, 'use_tpu': False, '_task_type': None, '_save_checkpoints_secs': None, '_save_checkpoints_steps': 1000, '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7fbb1070d198>, '_is_chief': True, '_tf_config': gpu_options {
+  per_process_gpu_memory_fraction: 1.0
+}
+, '_master': '', '_session_config': gpu_options {
+  per_process_gpu_memory_fraction: 0.95
+}
+allow_soft_placement: true
+graph_options {
+  optimizer_options {
+  }
+}
+, 'data_parallelism': <tensor2tensor.utils.expert_utils.Parallelism object at 0x7fbba060d6d8>, '_keep_checkpoint_every_n_hours': 10000, '_tf_random_seed': 1234, '_keep_checkpoint_max': 20, '_model_dir': '/data/rimarakulin/en-ru-transfer_data/t2t_train/translate_en_to_ru', '_save_summary_steps': 100, '_environment': 'local', '_num_ps_replicas': 0, '_task_id': 0}
+[2018-03-26 14:53:41,907] Using config: {'_evaluation_master': '', 't2t_device_info': {'num_async_replicas': 1}, '_num_worker_replicas': 0, '_log_step_count_steps': 100, 'use_tpu': False, '_task_type': None, '_save_checkpoints_secs': None, '_save_checkpoints_steps': 1000, '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7fbb1070d198>, '_is_chief': True, '_tf_config': gpu_options {
+  per_process_gpu_memory_fraction: 1.0
+}
+, '_master': '', '_session_config': gpu_options {
+  per_process_gpu_memory_fraction: 0.95
+}
+allow_soft_placement: true
+graph_options {
+  optimizer_options {
+  }
+}
+, 'data_parallelism': <tensor2tensor.utils.expert_utils.Parallelism object at 0x7fbba060d6d8>, '_keep_checkpoint_every_n_hours': 10000, '_tf_random_seed': 1234, '_keep_checkpoint_max': 20, '_model_dir': '/data/rimarakulin/en-ru-transfer_data/t2t_train/translate_en_to_ru', '_save_summary_steps': 100, '_environment': 'local', '_num_ps_replicas': 0, '_task_id': 0}
+WARNING:tensorflow:Estimator's model_fn (<function T2TModel.make_estimator_model_fn.<locals>.wrapping_model_fn at 0x7fbb1070c510>) includes params argument, but params are not passed to Estimator.
+[2018-03-26 14:53:41,907] Estimator's model_fn (<function T2TModel.make_estimator_model_fn.<locals>.wrapping_model_fn at 0x7fbb1070c510>) includes params argument, but params are not passed to Estimator.
+WARNING:tensorflow:ValidationMonitor only works with --schedule=train_and_evaluate
+[2018-03-26 14:53:41,908] ValidationMonitor only works with --schedule=train_and_evaluate
+WARNING:tensorflow:Experiment.continuous_train_and_eval (from tensorflow.contrib.learn.python.learn.experiment) is experimental and may change or be removed at any time, and without warning.
+[2018-03-26 14:53:41,909] Experiment.continuous_train_and_eval (from tensorflow.contrib.learn.python.learn.experiment) is experimental and may change or be removed at any time, and without warning.
+INFO:tensorflow:Training model for 1000 steps
+[2018-03-26 14:53:41,916] Training model for 1000 steps
+INFO:tensorflow:Reading data files from /data/rimarakulin/en-ru-transfer_data/t2t_data/translate_en_to_ru-train*
+[2018-03-26 14:53:41,928] Reading data files from /data/rimarakulin/en-ru-transfer_data/t2t_data/translate_en_to_ru-train*
+INFO:tensorflow:partition: 0 num_data_files: 100
+[2018-03-26 14:53:41,930] partition: 0 num_data_files: 100
+INFO:tensorflow:Calling model_fn.
+[2018-03-26 14:53:42,116] Calling model_fn.
+INFO:tensorflow:Setting T2TModel mode to 'train'
+[2018-03-26 14:53:45,905] Setting T2TModel mode to 'train'
+INFO:tensorflow:Using variable initializer: uniform_unit_scaling
+[2018-03-26 14:53:45,906] Using variable initializer: uniform_unit_scaling
+INFO:tensorflow:Transforming feature 'inputs' with symbol_modality_33708_512.bottom
+[2018-03-26 14:53:45,952] Transforming feature 'inputs' with symbol_modality_33708_512.bottom
+Traceback (most recent call last):
+  File "/home/rimarakulin/venv/bin/t2t-trainer", line 6, in <module>
+    exec(compile(open(__file__).read(), __file__, 'exec'))
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/bin/t2t-trainer", line 32, in <module>
+    tf.app.run()
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/platform/app.py", line 126, in run
+    _sys.exit(main(argv))
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/bin/t2t-trainer", line 28, in main
+    t2t_trainer.main(argv)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/bin/t2t_trainer.py", line 337, in main
+    execute_schedule(exp)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/bin/t2t_trainer.py", line 287, in execute_schedule
+    getattr(exp, FLAGS.schedule)()
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/contrib/framework/python/framework/experimental.py", line 64, in new_func
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/contrib/learn/python/learn/experiment.py", line 765, in continuous_train_and_eval
+    saving_listeners=self._saving_listeners)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/contrib/learn/python/learn/experiment.py", line 868, in _call_train
+    saving_listeners=saving_listeners)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/estimator/estimator.py", line 352, in train
+    loss = self._train_model(input_fn, hooks, saving_listeners)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/estimator/estimator.py", line 812, in _train_model
+    features, labels, model_fn_lib.ModeKeys.TRAIN, self.config)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/estimator/estimator.py", line 793, in _call_model_fn
+    model_fn_results = self._model_fn(features=features, **kwargs)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 874, in wrapping_model_fn
+    use_tpu=use_tpu)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 925, in estimator_model_fn
+    logits, losses_dict = model(features)  # pylint: disable=not-callable
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/layers/base.py", line 696, in __call__
+    outputs = self.call(inputs, *args, **kwargs)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 139, in call
+    sharded_logits, losses = self.model_fn_sharded(sharded_features)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 191, in model_fn_sharded
+    sharded_logits, sharded_losses = dp(self.model_fn, datashard_to_features)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/expert_utils.py", line 254, in __call__
+    outputs.append(fns[i](*my_args[i], **my_kwargs[i]))
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 215, in model_fn
+    transformed_features = self.bottom(features)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 250, in bottom
+    transformed_features[key] = input_modality.bottom(features[key])
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/layers/modalities.py", line 125, in bottom
+    return self.bottom_simple(x, "shared", reuse=None)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/layers/modalities.py", line 113, in bottom_simple
+    var = self._get_weights()
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/layers/modalities.py", line 106, in _get_weights
+    self.cached_embeddings = tf.constant(ret, dtype=tf.float32)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/constant_op.py", line 214, in constant
+    value, dtype=dtype, shape=shape, verify_shape=verify_shape))
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/tensor_util.py", line 433, in make_tensor_proto
+    _AssertCompatible(values, dtype)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/tensor_util.py", line 344, in _AssertCompatible
+    (dtype.name, repr(mismatch), type(mismatch).__name__))
+TypeError: Expected float32, got list containing Tensors of type '_Message' instead.
+INFO:tensorflow:Importing user module custom_problems from path /home/rimarakulin/lowResourceNMT/transfer_learning
+[2018-03-26 15:04:23,230] Importing user module custom_problems from path /home/rimarakulin/lowResourceNMT/transfer_learning
+INFO:tensorflow:schedule=continuous_train_and_eval
+[2018-03-26 15:04:23,231] schedule=continuous_train_and_eval
+INFO:tensorflow:worker_gpu=2
+[2018-03-26 15:04:23,231] worker_gpu=2
+INFO:tensorflow:sync=False
+[2018-03-26 15:04:23,231] sync=False
+WARNING:tensorflow:Schedule=continuous_train_and_eval. Assuming that training is running on a single machine.
+[2018-03-26 15:04:23,231] Schedule=continuous_train_and_eval. Assuming that training is running on a single machine.
+INFO:tensorflow:datashard_devices: ['gpu:0', 'gpu:1']
+[2018-03-26 15:04:23,231] datashard_devices: ['gpu:0', 'gpu:1']
+INFO:tensorflow:caching_devices: None
+[2018-03-26 15:04:23,232] caching_devices: None
+INFO:tensorflow:ps_devices: ['gpu:0', 'gpu:1']
+[2018-03-26 15:04:23,232] ps_devices: ['gpu:0', 'gpu:1']
+INFO:tensorflow:Using config: {'_model_dir': '/data/rimarakulin/en-ru-transfer_data/t2t_train/translate_en_to_ru', '_task_type': None, '_is_chief': True, 't2t_device_info': {'num_async_replicas': 1}, '_master': '', '_keep_checkpoint_max': 20, '_tf_config': gpu_options {
+  per_process_gpu_memory_fraction: 1.0
+}
+, '_evaluation_master': '', '_num_worker_replicas': 0, '_save_summary_steps': 100, '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7f6ff93c9320>, '_save_checkpoints_steps': 1000, '_tf_random_seed': 1234, '_save_checkpoints_secs': None, 'data_parallelism': <tensor2tensor.utils.expert_utils.Parallelism object at 0x7f70612759e8>, '_task_id': 0, '_session_config': gpu_options {
+  per_process_gpu_memory_fraction: 0.95
+}
+allow_soft_placement: true
+graph_options {
+  optimizer_options {
+  }
+}
+, '_environment': 'local', 'use_tpu': False, '_keep_checkpoint_every_n_hours': 10000, '_num_ps_replicas': 0, '_log_step_count_steps': 100}
+[2018-03-26 15:04:23,385] Using config: {'_model_dir': '/data/rimarakulin/en-ru-transfer_data/t2t_train/translate_en_to_ru', '_task_type': None, '_is_chief': True, 't2t_device_info': {'num_async_replicas': 1}, '_master': '', '_keep_checkpoint_max': 20, '_tf_config': gpu_options {
+  per_process_gpu_memory_fraction: 1.0
+}
+, '_evaluation_master': '', '_num_worker_replicas': 0, '_save_summary_steps': 100, '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7f6ff93c9320>, '_save_checkpoints_steps': 1000, '_tf_random_seed': 1234, '_save_checkpoints_secs': None, 'data_parallelism': <tensor2tensor.utils.expert_utils.Parallelism object at 0x7f70612759e8>, '_task_id': 0, '_session_config': gpu_options {
+  per_process_gpu_memory_fraction: 0.95
+}
+allow_soft_placement: true
+graph_options {
+  optimizer_options {
+  }
+}
+, '_environment': 'local', 'use_tpu': False, '_keep_checkpoint_every_n_hours': 10000, '_num_ps_replicas': 0, '_log_step_count_steps': 100}
+WARNING:tensorflow:Estimator's model_fn (<function T2TModel.make_estimator_model_fn.<locals>.wrapping_model_fn at 0x7f6ffe5e1ea0>) includes params argument, but params are not passed to Estimator.
+[2018-03-26 15:04:23,385] Estimator's model_fn (<function T2TModel.make_estimator_model_fn.<locals>.wrapping_model_fn at 0x7f6ffe5e1ea0>) includes params argument, but params are not passed to Estimator.
+WARNING:tensorflow:ValidationMonitor only works with --schedule=train_and_evaluate
+[2018-03-26 15:04:23,386] ValidationMonitor only works with --schedule=train_and_evaluate
+WARNING:tensorflow:Experiment.continuous_train_and_eval (from tensorflow.contrib.learn.python.learn.experiment) is experimental and may change or be removed at any time, and without warning.
+[2018-03-26 15:04:23,387] Experiment.continuous_train_and_eval (from tensorflow.contrib.learn.python.learn.experiment) is experimental and may change or be removed at any time, and without warning.
+INFO:tensorflow:Training model for 1000 steps
+[2018-03-26 15:04:23,387] Training model for 1000 steps
+INFO:tensorflow:Reading data files from /data/rimarakulin/en-ru-transfer_data/t2t_data/translate_en_to_ru-train*
+[2018-03-26 15:04:23,411] Reading data files from /data/rimarakulin/en-ru-transfer_data/t2t_data/translate_en_to_ru-train*
+INFO:tensorflow:partition: 0 num_data_files: 100
+[2018-03-26 15:04:23,415] partition: 0 num_data_files: 100
+INFO:tensorflow:Calling model_fn.
+[2018-03-26 15:04:23,628] Calling model_fn.
+INFO:tensorflow:Setting T2TModel mode to 'train'
+[2018-03-26 15:04:27,278] Setting T2TModel mode to 'train'
+INFO:tensorflow:Using variable initializer: uniform_unit_scaling
+[2018-03-26 15:04:27,279] Using variable initializer: uniform_unit_scaling
+INFO:tensorflow:Transforming feature 'inputs' with symbol_modality_33708_512.bottom
+[2018-03-26 15:04:27,323] Transforming feature 'inputs' with symbol_modality_33708_512.bottom
+Traceback (most recent call last):
+  File "/home/rimarakulin/venv/bin/t2t-trainer", line 6, in <module>
+    exec(compile(open(__file__).read(), __file__, 'exec'))
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/bin/t2t-trainer", line 32, in <module>
+    tf.app.run()
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/platform/app.py", line 126, in run
+    _sys.exit(main(argv))
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/bin/t2t-trainer", line 28, in main
+    t2t_trainer.main(argv)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/bin/t2t_trainer.py", line 337, in main
+    execute_schedule(exp)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/bin/t2t_trainer.py", line 287, in execute_schedule
+    getattr(exp, FLAGS.schedule)()
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/contrib/framework/python/framework/experimental.py", line 64, in new_func
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/contrib/learn/python/learn/experiment.py", line 765, in continuous_train_and_eval
+    saving_listeners=self._saving_listeners)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/contrib/learn/python/learn/experiment.py", line 868, in _call_train
+    saving_listeners=saving_listeners)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/estimator/estimator.py", line 352, in train
+    loss = self._train_model(input_fn, hooks, saving_listeners)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/estimator/estimator.py", line 812, in _train_model
+    features, labels, model_fn_lib.ModeKeys.TRAIN, self.config)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/estimator/estimator.py", line 793, in _call_model_fn
+    model_fn_results = self._model_fn(features=features, **kwargs)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 874, in wrapping_model_fn
+    use_tpu=use_tpu)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 925, in estimator_model_fn
+    logits, losses_dict = model(features)  # pylint: disable=not-callable
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/layers/base.py", line 696, in __call__
+    outputs = self.call(inputs, *args, **kwargs)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 139, in call
+    sharded_logits, losses = self.model_fn_sharded(sharded_features)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 191, in model_fn_sharded
+    sharded_logits, sharded_losses = dp(self.model_fn, datashard_to_features)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/expert_utils.py", line 254, in __call__
+    outputs.append(fns[i](*my_args[i], **my_kwargs[i]))
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 215, in model_fn
+    transformed_features = self.bottom(features)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 250, in bottom
+    transformed_features[key] = input_modality.bottom(features[key])
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/layers/modalities.py", line 126, in bottom
+    return self.bottom_simple(x, "shared", reuse=None)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/layers/modalities.py", line 114, in bottom_simple
+    var = self._get_weights()
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/layers/modalities.py", line 106, in _get_weights
+    print('res', res)
+NameError: name 'res' is not defined
+INFO:tensorflow:Importing user module custom_problems from path /home/rimarakulin/lowResourceNMT/transfer_learning
+[2018-03-26 15:05:18,167] Importing user module custom_problems from path /home/rimarakulin/lowResourceNMT/transfer_learning
+INFO:tensorflow:schedule=continuous_train_and_eval
+[2018-03-26 15:05:18,170] schedule=continuous_train_and_eval
+INFO:tensorflow:worker_gpu=2
+[2018-03-26 15:05:18,170] worker_gpu=2
+INFO:tensorflow:sync=False
+[2018-03-26 15:05:18,170] sync=False
+WARNING:tensorflow:Schedule=continuous_train_and_eval. Assuming that training is running on a single machine.
+[2018-03-26 15:05:18,170] Schedule=continuous_train_and_eval. Assuming that training is running on a single machine.
+INFO:tensorflow:datashard_devices: ['gpu:0', 'gpu:1']
+[2018-03-26 15:05:18,171] datashard_devices: ['gpu:0', 'gpu:1']
+INFO:tensorflow:caching_devices: None
+[2018-03-26 15:05:18,171] caching_devices: None
+INFO:tensorflow:ps_devices: ['gpu:0', 'gpu:1']
+[2018-03-26 15:05:18,171] ps_devices: ['gpu:0', 'gpu:1']
+INFO:tensorflow:Using config: {'t2t_device_info': {'num_async_replicas': 1}, '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7f905b5cc358>, '_keep_checkpoint_every_n_hours': 10000, 'data_parallelism': <tensor2tensor.utils.expert_utils.Parallelism object at 0x7f90e15029e8>, '_session_config': gpu_options {
+  per_process_gpu_memory_fraction: 0.95
+}
+allow_soft_placement: true
+graph_options {
+  optimizer_options {
+  }
+}
+, '_task_id': 0, '_evaluation_master': '', '_environment': 'local', '_tf_random_seed': 1234, '_log_step_count_steps': 100, 'use_tpu': False, '_model_dir': '/data/rimarakulin/en-ru-transfer_data/t2t_train/translate_en_to_ru', '_num_ps_replicas': 0, '_task_type': None, '_keep_checkpoint_max': 20, '_save_summary_steps': 100, '_master': '', '_tf_config': gpu_options {
+  per_process_gpu_memory_fraction: 1.0
+}
+, '_save_checkpoints_steps': 1000, '_is_chief': True, '_num_worker_replicas': 0, '_save_checkpoints_secs': None}
+[2018-03-26 15:05:18,372] Using config: {'t2t_device_info': {'num_async_replicas': 1}, '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7f905b5cc358>, '_keep_checkpoint_every_n_hours': 10000, 'data_parallelism': <tensor2tensor.utils.expert_utils.Parallelism object at 0x7f90e15029e8>, '_session_config': gpu_options {
+  per_process_gpu_memory_fraction: 0.95
+}
+allow_soft_placement: true
+graph_options {
+  optimizer_options {
+  }
+}
+, '_task_id': 0, '_evaluation_master': '', '_environment': 'local', '_tf_random_seed': 1234, '_log_step_count_steps': 100, 'use_tpu': False, '_model_dir': '/data/rimarakulin/en-ru-transfer_data/t2t_train/translate_en_to_ru', '_num_ps_replicas': 0, '_task_type': None, '_keep_checkpoint_max': 20, '_save_summary_steps': 100, '_master': '', '_tf_config': gpu_options {
+  per_process_gpu_memory_fraction: 1.0
+}
+, '_save_checkpoints_steps': 1000, '_is_chief': True, '_num_worker_replicas': 0, '_save_checkpoints_secs': None}
+WARNING:tensorflow:Estimator's model_fn (<function T2TModel.make_estimator_model_fn.<locals>.wrapping_model_fn at 0x7f90607e1ea0>) includes params argument, but params are not passed to Estimator.
+[2018-03-26 15:05:18,373] Estimator's model_fn (<function T2TModel.make_estimator_model_fn.<locals>.wrapping_model_fn at 0x7f90607e1ea0>) includes params argument, but params are not passed to Estimator.
+WARNING:tensorflow:ValidationMonitor only works with --schedule=train_and_evaluate
+[2018-03-26 15:05:18,373] ValidationMonitor only works with --schedule=train_and_evaluate
+WARNING:tensorflow:Experiment.continuous_train_and_eval (from tensorflow.contrib.learn.python.learn.experiment) is experimental and may change or be removed at any time, and without warning.
+[2018-03-26 15:05:18,374] Experiment.continuous_train_and_eval (from tensorflow.contrib.learn.python.learn.experiment) is experimental and may change or be removed at any time, and without warning.
+INFO:tensorflow:Training model for 1000 steps
+[2018-03-26 15:05:18,375] Training model for 1000 steps
+INFO:tensorflow:Reading data files from /data/rimarakulin/en-ru-transfer_data/t2t_data/translate_en_to_ru-train*
+[2018-03-26 15:05:18,398] Reading data files from /data/rimarakulin/en-ru-transfer_data/t2t_data/translate_en_to_ru-train*
+INFO:tensorflow:partition: 0 num_data_files: 100
+[2018-03-26 15:05:18,401] partition: 0 num_data_files: 100
+INFO:tensorflow:Calling model_fn.
+[2018-03-26 15:05:18,586] Calling model_fn.
+INFO:tensorflow:Setting T2TModel mode to 'train'
+[2018-03-26 15:05:22,394] Setting T2TModel mode to 'train'
+INFO:tensorflow:Using variable initializer: uniform_unit_scaling
+[2018-03-26 15:05:22,396] Using variable initializer: uniform_unit_scaling
+INFO:tensorflow:Transforming feature 'inputs' with symbol_modality_33708_512.bottom
+[2018-03-26 15:05:22,441] Transforming feature 'inputs' with symbol_modality_33708_512.bottom
+Traceback (most recent call last):
+  File "/home/rimarakulin/venv/bin/t2t-trainer", line 6, in <module>
+    exec(compile(open(__file__).read(), __file__, 'exec'))
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/bin/t2t-trainer", line 32, in <module>
+    tf.app.run()
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/platform/app.py", line 126, in run
+    _sys.exit(main(argv))
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/bin/t2t-trainer", line 28, in main
+    t2t_trainer.main(argv)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/bin/t2t_trainer.py", line 337, in main
+    execute_schedule(exp)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/bin/t2t_trainer.py", line 287, in execute_schedule
+    getattr(exp, FLAGS.schedule)()
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/contrib/framework/python/framework/experimental.py", line 64, in new_func
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/contrib/learn/python/learn/experiment.py", line 765, in continuous_train_and_eval
+    saving_listeners=self._saving_listeners)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/contrib/learn/python/learn/experiment.py", line 868, in _call_train
+    saving_listeners=saving_listeners)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/estimator/estimator.py", line 352, in train
+    loss = self._train_model(input_fn, hooks, saving_listeners)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/estimator/estimator.py", line 812, in _train_model
+    features, labels, model_fn_lib.ModeKeys.TRAIN, self.config)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/estimator/estimator.py", line 793, in _call_model_fn
+    model_fn_results = self._model_fn(features=features, **kwargs)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 874, in wrapping_model_fn
+    use_tpu=use_tpu)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 925, in estimator_model_fn
+    logits, losses_dict = model(features)  # pylint: disable=not-callable
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/layers/base.py", line 696, in __call__
+    outputs = self.call(inputs, *args, **kwargs)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 139, in call
+    sharded_logits, losses = self.model_fn_sharded(sharded_features)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 191, in model_fn_sharded
+    sharded_logits, sharded_losses = dp(self.model_fn, datashard_to_features)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/expert_utils.py", line 254, in __call__
+    outputs.append(fns[i](*my_args[i], **my_kwargs[i]))
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 215, in model_fn
+    transformed_features = self.bottom(features)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/utils/t2t_model.py", line 250, in bottom
+    transformed_features[key] = input_modality.bottom(features[key])
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/layers/modalities.py", line 126, in bottom
+    return self.bottom_simple(x, "shared", reuse=None)
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/layers/modalities.py", line 114, in bottom_simple
+    var = self._get_weights()
+  File "/home/rimarakulin/tensor2tensor/tensor2tensor/layers/modalities.py", line 107, in _get_weights
+    self.cached_embeddings = tf.constant(ret, dtype=tf.float32)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/constant_op.py", line 214, in constant
+    value, dtype=dtype, shape=shape, verify_shape=verify_shape))
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/tensor_util.py", line 433, in make_tensor_proto
+    _AssertCompatible(values, dtype)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/tensor_util.py", line 344, in _AssertCompatible
+    (dtype.name, repr(mismatch), type(mismatch).__name__))
+TypeError: Expected float32, got list containing Tensors of type '_Message' instead.

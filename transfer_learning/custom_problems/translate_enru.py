@@ -17,6 +17,13 @@ class TranslateEnToRu(translate_ende.TranslateEndeWmt32k):
     # Because we have train/dev/test subsets
         return True
 
+    @property
+    def vocab_filename(self):
+        return "vocab.enru.%d" % self.approx_vocab_size
+
+    def eval_metrics(self):
+        return [metrics.Metrics.APPROX_BLEU, metrics.Metrics.NEG_LOG_PERPLEXITY]
+
     def generate_samples(self, data_dir, tmp_dir, dataset_split):
         is_train_dataset = dataset_split == problem.DatasetSplit.TRAIN
         dataset_label = 'train' if is_train_dataset else 'dev'

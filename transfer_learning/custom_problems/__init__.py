@@ -1,1 +1,1 @@
-from . import translate_enhe, translate_enru
+from . import translate_enru
