@@ -150,6 +150,13 @@ setup | bleu
 10% train + 10% back translated | 44.3
 10% train + 10% back weight translated | 44.5
 
+![he-en_10__test](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/f1e26c2b989e085e15439f453cde786c/he-en_10__test.png)
+
+setup | bleu
+------|-----
+100% train en-he| 75
+101% train he-en| 59
+
 ![100__test4000](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/0991d054934a1bae91db7ad40d5dbb58/100__test4000.png)
 
 
