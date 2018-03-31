@@ -142,12 +142,15 @@ results on new test ~ 29K:
 
 setup | bleu
 ------|-----
-100% train | 67
-10% train | 42
-10% train + 90% forward translated | 38
-10% train + 90% back translated | 33
+100% train | 67.8
+10% train | 42.2
+10% train + 90% forward translated | 38.5
+10% train + 90% back translated | 33.3
+10% train + 10% forward translated | 42.4
+10% train + 10% back translated | 44.3
+10% train + 10% back weight translated | 44.5
 
-![curves](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/d3badcb53695275879fbcc0000aada3e/forward.back.translate.png)
+![100__test4000](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/0991d054934a1bae91db7ad40d5dbb58/100__test4000.png)
 
 
 ### 4. Transfer learning
