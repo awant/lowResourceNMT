@@ -112,6 +112,8 @@ steps | bleu
 13K | 75.27
 14K | 75.77
 
+![100__test4000](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/0991d054934a1bae91db7ad40d5dbb58/100__test4000.png)
+
 results on old test ~ 1K:
 
 steps | bleu
@@ -138,26 +140,31 @@ Training size
 ### 3. Back-Forward Translation
 
 
-results on new test ~ 29K:
+results he-en on new test 29K:
 
 setup | bleu
 ------|-----
-100% train | 67.8
-10% train | 42.2
-10% train + 90% forward translated | 38.5
-10% train + 90% back translated | 33.3
-10% train + 10% forward translated | 42.4
-10% train + 10% back translated | 44.3
-10% train + 10% back weight translated | 44.5
+100% train | 67.80
+10% train | 42.26
+10% train + 90% forward translated | 38.46
+10% train + 90% back translated | 33.28
+10% train + 10% forward translated | 42.40
+10% train + 10% back translated | 44.33
+10% train + 10% back weight translated | 44.55
 
 ![he-en_10__test](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/f1e26c2b989e085e15439f453cde786c/he-en_10__test.png)
 
+results en-he on old dev 4K:
+
 setup | bleu
 ------|-----
-100% train en-he| 75
-101% train he-en| 59
+100% train | 75.77
+10% train | 45.89
+10% train + 10% forward translated | 46.33
+10% train + 10% back translated | 47.05
 
-![100__test4000](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/0991d054934a1bae91db7ad40d5dbb58/100__test4000.png)
+![en-he_10__test](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/2ca7457d6589cdfde94a588e633c2421/en-he_10__test.png)
+
 
 
 ### 4. Transfer learning
