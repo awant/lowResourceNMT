@@ -169,6 +169,8 @@ setup | bleu
 
 ### 4. Transfer learning
 
+![en-ru_bleu_translation](https://github.com/awant/lowResourceNMT/blob/master/en-ru_approx_bleu_scores.png)
+
 |             |                                                                                                                                                                     Sentences                                                                                                                                                                     |
 |-------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | orig sent   | Traditionally, the Arabs have worshiped and appreciated hunt with hunting birds (using saker falcons for hunting houbara bustard).                                                                                                                                                                                                                |
