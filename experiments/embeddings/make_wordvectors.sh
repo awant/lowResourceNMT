@@ -18,7 +18,11 @@ mkdir data;
 echo "step 1. Build Corpus."
 python build_corpus.py --part=${part} --lcode=${lcode} --max_corpus_size=${max_corpus_size} --workers=24
 
-echo "step 2. make wordvectors"
+echo "step 2. Make wordvectors"
 python make_wordvectors.py  --workers=${workers} --lcode=${lcode} \
                     --vector_size=${vector_size} --window_size=${window_size} \
                     --vocab_size=${vocab_size} --num_negative=${num_negative}
+
+echo "step 3. Convert wordvectors to good csv format"
+g++ -o emb2csv embeddings2csv.cpp
+./emb2csv data/${lcode}.tsv data/${lcode}.csv
