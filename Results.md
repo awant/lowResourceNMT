@@ -169,8 +169,8 @@ results en-ru on 15K test:
 
 setup | bleu cased
 ------|-----
-10% train | 14.08
-10% train + 10% back translated | 15.36
+100K train | 14.08
+100K train + 100K back translated | 15.36
 
 ![en-ru_10__test](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/82ac54ad1c67b71ec1a9de430565ac49/en-ru_test.png)
 
