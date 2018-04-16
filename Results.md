@@ -169,10 +169,30 @@ results en-ru on 15K test:
 
 setup | bleu cased
 ------|-----
-100K train | 14.08
-100K train + 100K back translated | 15.36
+100K train | 14.58
+200K train | 16.35
+100K train + 100K back translated | 16.39
 
-![en-ru_10__test](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/82ac54ad1c67b71ec1a9de430565ac49/en-ru_test.png)
+![en-ru_10__test](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/26fd0adabf7d09d89c9969ef8cdbf093/en-ru_test.png)
+
+results ru-en on 15K test:
+
+setup | bleu cased
+------|-----
+100K train | 17.96
+100K train + 100K back translated | 20.29
+
+### Joint training
+
+results en-ru on 15K test:
+
+setup | bleu cased
+------|-----
+100K train, iter 0 | 14.58
+100K train + 100K back translated, iter 1 | 16.39
+100K train + 100K back translated, iter 2 | 16.73
+
+![en-ru_10__test](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/d0f0b6295e9dd5761fbbcd1d26be4c41/en-ru_jt_test.png)
 
 ### 4. Transfer learning
 
