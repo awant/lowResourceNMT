@@ -63,6 +63,8 @@ preserving monolingual invariance](https://aclweb.org/anthology/D16-1250)
 
 [Effective Domain Mixing for Neural Machine Translation](https://nlp.stanford.edu/pubs/pryzant2017wmt.pdf)
 
+[Phrase-Based & Neural Unsupervised Machine Translation](https://arxiv.org/pdf/1804.07755.pdf)
+
 ### How to run train-and-evaluation with he-en:
 1) place your data in data/t2t_data/* (en.train.txt, he.train.txt - train, dev, test generate from these files)
 2) run he-en_translation.sh (with options, train/dev/test sizes, etc - check script for more info)
