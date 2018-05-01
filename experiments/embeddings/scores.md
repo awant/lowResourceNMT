@@ -6,5 +6,5 @@
 
 direction | stemmed | merged
 ----------|---------|--------
-ru-en | 5.16 | 5.89
+ru-en | 5.89 | 5.16
 en-ru | 4.76 | 2.66
