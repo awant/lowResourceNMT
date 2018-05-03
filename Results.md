@@ -169,7 +169,7 @@ results en-ru on 15K test:
 
 setup | bleu cased
 ------|-----
-100K train | 14.58
+100K train | 14.87
 200K train | 16.35
 100K train + 100K back translated | 16.39
 
@@ -188,11 +188,20 @@ results en-ru on 15K test:
 
 setup | bleu cased
 ------|-----
-100K train, iter 0 | 14.58
+100K train, iter 0 | 14.87
 100K train + 100K back translated, iter 1 | 16.39
 100K train + 100K back translated, iter 2 | 16.73
 
 ![en-ru_10__test](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/d0f0b6295e9dd5761fbbcd1d26be4c41/en-ru_jt_test.png)
+
+### Many to One (from Zero-shot)
+
+results on 15K test:
+
+setup | bleu cased
+------|-----
+100K en-ru | 14.87
+100K en-ru + 100K de-ru | 15.38
 
 ### 4. Transfer learning
 
