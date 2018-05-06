@@ -1,6 +1,6 @@
 # Results
 
-## 1. 20k dictionary, fully unsupervised
+## 1. 20k dictionary, fully unsupervised (100k batches)
 
 ### Bleu scores (word level)
 
