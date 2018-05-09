@@ -182,6 +182,15 @@ setup | bleu cased
 100K train | 17.96
 100K train + 100K back translated | 20.29
 
+results en-ru on 15K test:
+
+setup | bleu cased
+------|-----
+100K train | 14.87
+100K train + 100K back translated | 16.39
+100K train + 300K back translated | 18.12
+100K train + 860K back translated | 18.35
+
 ### Joint training
 
 results en-ru on 15K test:
