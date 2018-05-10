@@ -1,6 +1,9 @@
 # lowResourceNMT
 Improve a baseline NMT system trained on a very small parallel corpus using either monolingual data or parallel data in other languages
 
+# Presentation
+https://docs.google.com/presentation/d/1J6Xh0YfCSnQIcA6doUm7skZEG1ZqE50bUFehq72i6V4
+
 ### Datasets:
 https://yadi.sk/d/xUKsoX-G3T6ZYc
 
