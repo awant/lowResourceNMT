@@ -22,3 +22,13 @@ ru->en | 6.95 | 6.12
 en->ru | 7.03 | 4.08
 en->en | 74.04 | 72.10
 ru->ru | 72.62 | 68.62
+
+
+## 3. Random swap, 20k dict, unsupervised
+
+### Bleu scores (word level)
+
+direction | stemmed | merged
+----------|---------|--------
+ru->en | 6.34 | 5.65
+en->ru | 4.74 | 2.69
