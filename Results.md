@@ -190,6 +190,7 @@ setup | bleu cased
 100K train + 100K back translated | 16.39
 100K train + 300K back translated | 18.12
 100K train + 860K back translated | 18.35
+100K train + 860K back translated 32K dict | 19.11
 
 ### Joint training
 
