@@ -45,7 +45,7 @@ en->ru | 8.88 | 5.69
 en->en | 82.17 | 81.44
 ru->ru | 77.92 | 77.08
 
-## 4. New 50k dict, training only on stems, 100k parallel sentences
+## 5. New 50k dict, training only on stems, 100k parallel sentences
 
 ### Bleu scores (word level)
 
@@ -53,3 +53,5 @@ direction | stemmed
 ----------|---------
 ru->en | 9.89 
 en->ru | 8.93
+en->en | 74.99
+ru->ru | 71.24
