@@ -32,3 +32,13 @@ direction | stemmed | merged
 ----------|---------|--------
 ru->en | 6.34 | 5.65
 en->ru | 4.74 | 2.69
+
+
+### 4. New 50k dict, training only on stems, 100k parallel sentences
+
+### Bleu scores (word level)
+
+direction | stemmed 
+----------|---------
+ru->en | 9.89 
+en->ru | 8.93
