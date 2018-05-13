@@ -32,6 +32,8 @@ direction | stemmed | merged
 ----------|---------|--------
 ru->en | 6.34 | 5.65
 en->ru | 4.74 | 2.69
+en->en | 83.11 | 82.20
+ru->ru | 81.41 | 80.61
 
 
 ## 4. Random swap, 20k dict, 100k parallel sentences
