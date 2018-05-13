@@ -212,7 +212,7 @@ setup | bleu cased
 ------|-----
 100K en-ru | 14.87
 100K en-ru + 100K de-ru | 15.38
-100K en-ru + 100K back translated | 16.28
+100K en-ru + 100K back translated | 16.48
 
 ![en-ru_de-ru__test](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/e205d5899a22662011f1f85b6bc65ec9/en-ru_mto_test.png)
 
