@@ -34,6 +34,17 @@ ru->en | 6.34 | 5.65
 en->ru | 4.74 | 2.69
 
 
+## 4. Random swap, 20k dict, 100k parallel sentences
+
+### Bleu scores (word level)
+
+direction | stemmed | merged
+----------|---------|--------
+ru->en | 11.90 | 10.77
+en->ru | 8.88 | 5.69
+en->en | 82.17 | 81.44
+ru->ru | 77.92 | 77.08
+
 ## 4. New 50k dict, training only on stems, 100k parallel sentences
 
 ### Bleu scores (word level)
