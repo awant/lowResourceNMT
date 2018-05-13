@@ -175,13 +175,6 @@ setup | bleu cased
 
 ![en-ru_10__test](https://trello-attachments.s3.amazonaws.com/5a8c674b302a8b5b2f0d9cd8/5aa70addb0e4401313478392/26fd0adabf7d09d89c9969ef8cdbf093/en-ru_test.png)
 
-results ru-en on 15K test:
-
-setup | bleu cased
-------|-----
-100K train | 17.96
-100K train + 100K back translated | 20.29
-
 results en-ru on 15K test:
 
 setup | bleu cased
@@ -191,6 +184,13 @@ setup | bleu cased
 100K train + 300K back translated | 18.12
 100K train + 860K back translated | 18.35
 100K train + 860K back translated 32K dict | 19.11
+
+results ru-en on 15K test:
+
+setup | bleu cased
+------|-----
+100K train | 17.96
+100K train + 100K back translated | 20.29
 
 ### Joint training
 
